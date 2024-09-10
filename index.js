@@ -11,3 +11,8 @@ app.listen(port, (err)=>{
 
     else console.log("server started succesfully on port"+ port)
 })
+// create simple get api that gives you some data in response
+
+app.get("/test",(req,res)=>{
+    res.status(200).send("hello from me")
+})
