@@ -1,7 +1,8 @@
-const {sequelize}= require("sequelize")
+const {Sequelize}= require("sequelize")
 
 
-const sequelize = new sequelize("firstdb","root","root",{
+
+const sequelize = new Sequelize("firstdb","root","root",{
 
     host:"localhost",
     dialect:"mysql",
