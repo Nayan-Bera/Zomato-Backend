@@ -16,3 +16,5 @@ sequelize.authenticate().then(()=>{
 
     console.log("unble to connect due to error"+err)
 })
+
+module.exports = sequelize;
