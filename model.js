@@ -13,18 +13,18 @@ const user = sequelize.define("user",{
         type:DataTypes.STRING,
         allowNull:false
     },
-    Email:{
+    email:{
         type:DataTypes.STRING,
         allowNull:false,
         unique:true
     },
 
-    Password:{
+    password:{
         type:DataTypes.STRING,
         allowNull:false
     }, 
     
-    Phonenumber:{
+    Phone_number:{
         type:DataTypes.INTEGER,
         allowNull:false
     }
