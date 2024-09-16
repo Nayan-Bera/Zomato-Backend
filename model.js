@@ -26,7 +26,8 @@ const user = sequelize.define("user",{
     
     Phone_number:{
         type:DataTypes.INTEGER,
-        allowNull:false
+        allowNull:false,
+        unique:true
     }
 })
 
