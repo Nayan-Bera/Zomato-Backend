@@ -23,10 +23,10 @@ app.post("/registeruser", async(req,res)=>{
 
    /// const {name,email,Password,Phone_number}= req.body
     console.log(name,email)
-    const newuser = await user.create({
+    const newUser = await user.create({
         name,email,Password,Phone_number
     })
-console.log(newuser)
+console.log(newUser)
 })
 
 
