@@ -1,7 +1,8 @@
 const {DataTypes}= require("sequelize")
 
-const {Sequelize}= require("./dbconnect")
 const sequelize = require("./dbconnect")
+
+
 
 const user = sequelize.define("user",{
     id:{
