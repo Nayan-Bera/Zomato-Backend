@@ -16,7 +16,12 @@ app.use(express.json());
 // create simple get api that gives you some data in response
 
 app.post("/registeruser", async(req,res)=>{
-    const {name,email,Password,Phone_number}= req.body
+    const name = req.body.name;
+    const email = req.body.email;
+    const Password = req.body.Password;
+    const Phone_number = req.body.Phone_number;
+
+   /// const {name,email,Password,Phone_number}= req.body
     console.log(name,email)
     const newuser = await user.create({
         name,email,Password,Phone_number
