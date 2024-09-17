@@ -1,5 +1,6 @@
 const express = require('express')
-const User = require("./model")
+const User = require("./model");
+const { Where } = require('sequelize/lib/utils');
 
 const app = express();
 
@@ -23,15 +24,33 @@ app.post("/registerUser", async(req,res)=>{
 
    /// const {name,email,Password,Phone_number}= req.body
     console.log(name,email)
-
+try{
     const newUser = await User.create({
         name,
         email,
         password,
         phone_number,
     })
+res.status(201).send("user created succsefully");
 
-console.log(newUser)
+}
+catch(err)
+{
+console.log(err)
+
+}
+
+})
+
+app.post("/login", async (req,res)=>{
+
+const {email,password}= req.body;
+const findUser = await User.findOne({where:{email:email}})
+
+if(findUser)
+{
+    console.log(findUser)
+}
 
 })
 
