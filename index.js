@@ -45,11 +45,21 @@ console.log(err)
 app.post("/login", async (req,res)=>{
 
 const {email,password}= req.body;
-const findUser = await User.findOne({where:{email:email}})
+const findUser = await User.findOne({ where: { email: email } })
 
 if(findUser)
 {
-    console.log(findUser)
+    const data= JSON.parse(JSON.stringify(findUser))
+    console.log(data.password)
+    if(data.password==password){
+        res.status(200).send("logged in sussesfully")
+    }
+    else{
+        res.status(401).send("invalid user name or password")
+    }
+}
+else{
+    res.status(200).send("user does not exist pls register")
 }
 
 })
