@@ -4,7 +4,7 @@ const sequelize = require("./dbconnect")
 
 
 
-const user = sequelize.define("user",{
+const User = sequelize.define("user",{
     id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
@@ -25,11 +25,18 @@ const user = sequelize.define("user",{
         allowNull:false
     }, 
     
-    Phone_number:{
+    phone_number:{
         type:DataTypes.INTEGER,
         allowNull:false,
         unique:true
+    },
+    createdAt:{
+        type:DataTypes.TIME
+        
+    } ,
+    updatedAt:{
+        type:DataTypes.TIME   
     }
 })
 
-module.exports = user;
+module.exports = User;

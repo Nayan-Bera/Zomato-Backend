@@ -1,5 +1,5 @@
 const express = require('express')
-const user = require("./model")
+const User = require("./model")
 
 const app = express();
 
@@ -15,18 +15,25 @@ app.listen(port, (err)=>{
 app.use(express.json());
 // create simple get api that gives you some data in response
 
-app.post("/registeruser", async(req,res)=>{
+app.post("/registerUser", async(req,res)=>{
     const name = req.body.name;
     const email = req.body.email;
-    const Password = req.body.Password;
-    const Phone_number = req.body.Phone_number;
+    const password = req.body.password;
+    const phone_number = req.body.phone_number;
 
    /// const {name,email,Password,Phone_number}= req.body
     console.log(name,email)
-    const newUser = await user.create({
-        name,email,Password,Phone_number
+
+    const newUser = await User.create({
+        name,
+        email,
+        password,
+        phone_number,
     })
+
 console.log(newUser)
+
 })
+
 
 

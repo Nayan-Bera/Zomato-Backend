@@ -1,7 +1,6 @@
 const {Sequelize}= require("sequelize")
 
 
-
 const sequelize = new Sequelize("firstdb","root","root",{
 
     host:"localhost",
