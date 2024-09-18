@@ -42,35 +42,37 @@ const User = sequelize.define("user",{
 })
 const Menu =sequelize.define("menu",{
     
-    id:{
+    item_id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
         autoIncrement:true
     },
-    name:{
+
+    item_name:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    email:{
+
+    item_description:{
         type:DataTypes.STRING,
         allowNull:false,
-        unique:true
     },
 
-    password:{
-        type:DataTypes.STRING,
+    item_price:{
+        type:DataTypes.INTEGER,
         allowNull:false
     }, 
     
-    phone_number:{
+    item_rating:{
         type:DataTypes.INTEGER,
-        allowNull:false,
-        unique:true
+        allowNull:true,   
     },
+
     createdAt:{
         type:DataTypes.TIME
         
-    } ,
+    },
+
     updatedAt:{
         type:DataTypes.TIME   
     }
@@ -79,3 +81,4 @@ const Menu =sequelize.define("menu",{
 })
 
 module.exports = User;
+module.exports = Menu;
