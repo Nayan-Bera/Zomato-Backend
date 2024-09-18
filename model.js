@@ -38,10 +38,20 @@ const User = sequelize.define("user",{
         type:DataTypes.TIME   
     }
 
- const Menu =sequelize.define("menu",{
-
-
+ 
 })
+const Menu =sequelize.define("menu",{
+    
+    id:{
+        type:DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+    },
+    name:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+
 })
 
 module.exports = User;
