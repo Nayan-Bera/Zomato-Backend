@@ -37,6 +37,11 @@ const User = sequelize.define("user",{
     updatedAt:{
         type:DataTypes.TIME   
     }
+
+ const Menu =sequelize.define("menu",{
+
+
+})
 })
 
 module.exports = User;
