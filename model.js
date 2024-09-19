@@ -1,4 +1,4 @@
-const {DataTypes}= require("sequelize")
+const {DataTypes, INTEGER}= require("sequelize")
 
 const sequelize = require("./dbconnect")
 
@@ -38,8 +38,8 @@ const User = sequelize.define("user",{
         type:DataTypes.TIME   
     }
 
- 
 })
+
 const Menu =sequelize.define("menu",{
     
     item_id:{
@@ -68,6 +68,16 @@ const Menu =sequelize.define("menu",{
         allowNull:true,   
     },
 
+    item_availability:{
+        type:DataTypes.INTEGER,
+        allowNull:false,   
+    },
+
+    is_veg:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false,   
+    },
+
     createdAt:{
         type:DataTypes.TIME
         
@@ -77,8 +87,55 @@ const Menu =sequelize.define("menu",{
         type:DataTypes.TIME   
     }
 
+})
+
+const Restaurant = sequelize.define("restaurant",{
+
+    restaurant_id:{
+        type:DataTypes.INTEGER,
+        autoIncrement:true,
+        primaryKey:true
+        
+    },
+
+    rest_name:{
+        type:DataTypes.STRING,
+        allowNull:false
+
+    },
+
+    rest_address:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+
+    rest_phone:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        unique:true
+    },
+
+    rest_rating:{
+        type:DataTypes.INTEGER,
+        allowNull:true
+    },
+
+    rest_status:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
+    },
+
+    createdAt:{
+        type:DataTypes.TIME
+        
+    },
+
+    updatedAt:{
+        type:DataTypes.TIME   
+    }
 
 })
 
 module.exports = User;
 module.exports = Menu;
+module.exports = Restaurant;
