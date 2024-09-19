@@ -42,6 +42,11 @@ const User = sequelize.define("user",{
 
 const Menu =sequelize.define("menu",{
     
+    restaurant_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    },
+    
     item_id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
@@ -136,6 +141,4 @@ const Restaurant = sequelize.define("restaurant",{
 
 })
 
-module.exports = User;
-module.exports = Menu;
-module.exports = Restaurant;
+module.exports = {User,Menu,Restaurant};
