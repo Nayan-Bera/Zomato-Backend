@@ -41,7 +41,7 @@ const User = sequelize.define("user",{
 })
 
 const Menu =sequelize.define("menu",{
-    
+
     restaurant_id:{
         type:DataTypes.INTEGER,
         allowNull:false
@@ -140,5 +140,8 @@ const Restaurant = sequelize.define("restaurant",{
     }
 
 })
+
+Menu.belongsTo(Restaurant, { foreignKey:"restaurant_id" })
+Restaurant.hasMany(Menu, { foreignKey:"restaurant_id" })
 
 module.exports = {User,Menu,Restaurant};
