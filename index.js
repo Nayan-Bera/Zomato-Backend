@@ -1,5 +1,7 @@
 const express = require('express')
-const User = require("./model");
+
+const {User, Restaurant} = require("./model");
+
 const { Where } = require('sequelize/lib/utils');
 
 const app = express();
@@ -30,14 +32,14 @@ try{
         email,
         password,
         phone_number,
-    })
+})
 res.status(201).send("user created succsefully");
 
 }
 catch(err)
 {
 console.log(err)
-
+res.status(400).send("something went wrong")
 }
 
 })
@@ -63,6 +65,31 @@ else{
 }
 
 })
+
+app.post("/registerRestaurant", async (req,res)=>{
+
+    const {rest_name, rest_address,rest_phone,rest_rating,rest_status} =req.body
+    
+    try{
+        const newRestaurant = await Restaurant.create({
+            rest_name, 
+            rest_address,
+            rest_phone,
+            rest_rating,
+            rest_status,
+     })
+    
+    if(newRestaurant){
+        res.status(201).send("restaurant created succesfully")
+    }
+}
+    catch(err)
+    {
+    console.log(err)
+    res.status(400).send("something went wrong")
+    }
+    
+    })
 
 
 
