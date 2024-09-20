@@ -1,6 +1,6 @@
 const express = require('express')
 
-const {User, Restaurant} = require("./model");
+const {User, Restaurant, Menu} = require("./model");
 
 const { Where } = require('sequelize/lib/utils');
 
@@ -91,5 +91,30 @@ app.post("/registerRestaurant", async (req,res)=>{
     
     })
 
+app.post("/addmenu", async(req,res)=>
+    {
+    const {restaurant_id, item_name, item_description,item_price, item_rating, item_availability, is_veg} = req.body
+    try{
 
+        const newMenu = await Menu.create({
+            item_name, 
+            restaurant_id,
+            item_description,
+            item_price, 
+            item_rating, 
+            item_availability, 
+            is_veg
+     })
+     if(newMenu){
+        res.status(201).send("Menu created succesfully")
+    }
+}
+    catch(err)
+    {
+    console.log(err)
+    res.status(400).send("something went wrong")
+    }
+    
+
+})
 
