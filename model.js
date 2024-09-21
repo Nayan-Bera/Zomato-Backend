@@ -141,7 +141,100 @@ const Restaurant = sequelize.define("restaurant",{
 
 })
 
+const Order = sequelize.define("order",{
+
+    order_id:{
+        type:DataTypes.INTEGER,
+        autoIncrement:true,
+        primaryKey:true
+        
+    },
+
+    item_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+
+    },
+
+    restaurant_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+
+    },
+
+    id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    },
+
+   order_status:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+
+    createdAt:{
+        type:DataTypes.TIME
+        
+    },
+
+    updatedAt:{
+        type:DataTypes.TIME   
+    }
+
+})
+
+const Order_details = sequelize.define("order_details",{
+
+    order_id:{
+        type:DataTypes.INTEGER,
+        autoIncrement:true,
+        primaryKey:true
+        
+    },
+
+   item_id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+
+    },
+
+    id:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    },
+
+    quantity:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    }, 
+    
+    price:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    },
+
+    payment_method:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+
+    createdAt:{
+        type:DataTypes.TIME
+        
+    },
+
+    updatedAt:{
+        type:DataTypes.TIME   
+    }
+
+})
+
 Menu.belongsTo(Restaurant, { foreignKey:"restaurant_id" })
 Restaurant.hasMany(Menu, { foreignKey:"restaurant_id" })
 
-module.exports = { User: User, Restaurant: Restaurant, Menu: Menu }
+Order.belongsTo(User,{foreignKey:"id"})
+User.hasMany(Order,{foreignKey:"id"})
+Order_details.belongsTo(Order,{foreignKey:"order_id"})
+Order.hasMany(Order_details,{foreignKey:"order_id"})
+
+module.exports = { User: User, Restaurant: Restaurant, Menu: Menu , Order:Order, Order_details:Order_details }
